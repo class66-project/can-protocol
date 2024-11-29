@@ -53,7 +53,7 @@
 #define CAPACITY_REMAINING_AMP_HOURS  0x61  // Size: 2 bytes
 
 #define CELL_COUNT                    0xC0  // Size: 1 bytes
-#define PACK_POWER                    0xC1  // Size: 4 bytes
+#define POWER_MAIN                    0xC1  // Size: 4 bytes
 #define ALARMS                        0xC2  // Size: 4 bytes
 #define NOMINAL_CAPACITY              0xC3  // Size: 4 bytes
 #define CHARGE_ENABLED                0xC4  // Size: 1 byte
