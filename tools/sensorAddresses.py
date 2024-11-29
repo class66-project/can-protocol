@@ -34,10 +34,10 @@ def run(filename):
         if parts[1] == "0x00":
             # skipping reserved address
             continue
-        
+
         if parts[2] == "" or parts[3] == "":
             continue
-        
+
         define = {}
         define["value"] = ""
         define["name"] = ""
@@ -48,7 +48,7 @@ def run(filename):
         name = ""
         if parts[2][:1] != "!":
             name += f"{parts[2].upper()}_"
-        
+
         name += parts[3].upper().replace(" ", "_")
 
         maxLength = max(len(name), maxLength)
@@ -58,7 +58,7 @@ def run(filename):
         define["size"] = parts[4]
         define["units"] = parts[5] or ''
         defines.append(define)
-    
+
     maxLength += 2
     lines = []
     for define in defines:
@@ -66,7 +66,8 @@ def run(filename):
             lines.append("")
         lines.append(f"#define {define['name'].ljust((maxLength + maxLength % 2))}{define['value']}  // Size: {define['size']}")
 
-    with open("../sensors.h", "w") as fh:
+    file_path = os.path.dirname(os.path.realpath(__file__))
+    with open(f"{file_path}/../sensors.h", "w") as fh:
         fh.write(header)
         fh.write("\n".join(lines))
 
