@@ -61,6 +61,7 @@
 #define LOCO_DIRECTION                0xC5  // Size: 1 byte
 #define HIGHEST_CELL                  0xC6  // Size: 1 bytes
 #define LOWEST_CELL                   0xC7  // Size: 1 bytes
+#define CYCLE_COUNT                   0xC8  // Size: 4 bytes
 
 #define RESISTANCE_CELL_1             0xD0  // Size: 2 bytes
 #define RESISTANCE_CELL_2             0xD1  // Size: 2 bytes
