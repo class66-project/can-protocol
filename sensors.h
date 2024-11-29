@@ -51,16 +51,16 @@
 
 #define CAPACITY_REMAINING_PERCENT    0x60  // Size: 1 byte
 #define CAPACITY_REMAINING_AMP_HOURS  0x61  // Size: 2 bytes
+#define CAPACITY_NOMINAL              0x62  // Size: 4 bytes
 
 #define CELL_COUNT                    0xC0  // Size: 1 bytes
 #define POWER_MAIN                    0xC1  // Size: 4 bytes
 #define ALARMS                        0xC2  // Size: 4 bytes
-#define NOMINAL_CAPACITY              0xC3  // Size: 4 bytes
-#define CHARGE_ENABLED                0xC4  // Size: 1 byte
-#define DISCHARGE_ENABLED             0xC5  // Size: 1 byte
-#define LOCO_DIRECTION                0xC6  // Size: 1 byte
-#define HIGHEST_CELL                  0xC7  // Size: 1 bytes
-#define LOWEST_CELL                   0xC8  // Size: 1 bytes
+#define CHARGE_ENABLED                0xC3  // Size: 1 byte
+#define DISCHARGE_ENABLED             0xC4  // Size: 1 byte
+#define LOCO_DIRECTION                0xC5  // Size: 1 byte
+#define HIGHEST_CELL                  0xC6  // Size: 1 bytes
+#define LOWEST_CELL                   0xC7  // Size: 1 bytes
 
 #define RESISTANCE_CELL_1             0xD0  // Size: 2 bytes
 #define RESISTANCE_CELL_2             0xD1  // Size: 2 bytes
