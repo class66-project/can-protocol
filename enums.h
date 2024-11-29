@@ -5,6 +5,7 @@
  *
  * See LICENSE for details
  */
+#pragma once
 
 enum CANID_FUNCTION {
   EMCY        = 0x01,
@@ -13,4 +14,11 @@ enum CANID_FUNCTION {
   SETCONFIG   = 0x04,
   GETCONFIG   = 0x05,
   HBEAT       = 0x07
+};
+
+enum CANID_STOCK {
+  LOCO1       = 0x00,
+  LOCO2       = 0x01,
+  UNPOWERED   = 0x10,
+  BROADCAST   = 0x11
 };

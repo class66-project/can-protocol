@@ -70,6 +70,7 @@ def run(filename):
     with open(f"{file_path}/../sensors.h", "w") as fh:
         fh.write(header)
         fh.write("\n".join(lines))
+        fh.write("\n")
 
 if __name__ == "__main__":
     run("/mnt/c/Users/Richard/OneDrive/Documents/66Shed/Can Protocol.xlsx")
