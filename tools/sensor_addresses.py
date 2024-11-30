@@ -1,12 +1,19 @@
+"""
+/* Copyright (C) 2024 Richard Franks - All Rights Reserved
+ *
+ * You may use, distribute and modify this code under the
+ * terms of the Apache 2.0 license.
+ *
+ * See LICENSE for details
+ */
+"""
 import os
-import sys
 import logging
-import subprocess
 from openpyxl import load_workbook
 
 logging.basicConfig(level=logging.DEBUG)
 
-header = """
+HEADER = """
 /* Copyright (C) 2024 Richard Franks - All Rights Reserved
  *
  * You may use, distribute and modify this code under the
@@ -19,13 +26,20 @@ header = """
 """
 
 def run(filename):
+    """Extracts the sensor addresses from the specified file"""
     workbook = load_workbook(filename=filename, read_only=True)
 
     defines = []
 
-    maxLength = 0
+    max_length = 0
 
-    for row in workbook["Sensor Addresses"].iter_rows(min_row = 1, max_row = 300, min_col = 1, max_col = 7, values_only = True):
+    for row in workbook["Sensor Addresses"].iter_rows(
+        min_row = 1,
+        max_row = 300,
+        min_col = 1,
+        max_col = 7,
+        values_only = True):
+
         parts = list(row)
         if None in (parts[1], parts[3], parts[4]):
             continue
@@ -51,7 +65,7 @@ def run(filename):
 
         name += parts[3].upper().replace(" ", "_")
 
-        maxLength = max(len(name), maxLength)
+        max_length = max(len(name), max_length)
 
         define["value"] = parts[1]
         define["name"] = name
@@ -59,16 +73,18 @@ def run(filename):
         define["units"] = parts[5] or ''
         defines.append(define)
 
-    maxLength += 2
+    max_length += 2
     lines = []
     for define in defines:
         if define["value"][-1:] == "0":
             lines.append("")
-        lines.append(f"#define {define['name'].ljust((maxLength + maxLength % 2))}{define['value']}  // Size: {define['size']}")
+        line = f"#define {define['name'].ljust((max_length + max_length % 2))}{define['value']}"
+        line += f"  // Size: {define['size']}"
+        lines.append(line)
 
     file_path = os.path.dirname(os.path.realpath(__file__))
-    with open(f"{file_path}/../sensors.h", "w") as fh:
-        fh.write(header)
+    with open(f"{file_path}/../sensors.h", "w", encoding="utf-8") as fh:
+        fh.write(HEADER)
         fh.write("\n".join(lines))
         fh.write("\n")
 
