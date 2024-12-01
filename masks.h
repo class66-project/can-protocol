@@ -13,8 +13,8 @@
 #define MATCH_FUNC_EMCY               0x0100
 #define MATCH_FUNC_SENSOR             0x0200
 #define MATCH_FUNC_ACTUATOR           0x0300
-#define MATCH_FUNC_CONFIG_SET         0x0400
-#define MATCH_FUNC_CONFIG_GET         0x0500
+#define MATCH_FUNC_CONFIG_TX          0x0400
+#define MATCH_FUNC_CONFIG_RX          0x0500
 #define MATCH_FUNC_HBEAT              0x0700
 
 #define MASK_STOCK                    0x00C0

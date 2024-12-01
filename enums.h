@@ -11,8 +11,8 @@ enum CANID_FUNCTION {
   EMCY        = 0x01,
   SENSOR      = 0x02,
   SETACTUATOR = 0x03,
-  SETCONFIG   = 0x04,
-  GETCONFIG   = 0x05,
+  TXCONFIG    = 0x04,
+  RXCONFIG    = 0x05,
   HBEAT       = 0x07
 };
 
