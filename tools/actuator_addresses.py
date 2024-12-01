@@ -30,7 +30,7 @@ def run(filename):
 
     max_length = 0
 
-    for row in workbook["Sensor Addresses"].iter_rows(
+    for row in workbook["Actuator Addresses"].iter_rows(
         min_row = 1,
         max_row = 300,
         min_col = 1,
@@ -80,7 +80,7 @@ def run(filename):
         lines.append(line)
 
     file_path = os.path.dirname(os.path.realpath(__file__))
-    with open(f"{file_path}/../sensors.h", "w", encoding="utf-8") as fh:
+    with open(f"{file_path}/../actuators.h", "w", encoding="utf-8") as fh:
         fh.write(HEADER)
         fh.write("\n".join(lines))
         fh.write("\n")

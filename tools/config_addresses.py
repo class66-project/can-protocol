@@ -23,27 +23,24 @@ HEADER = """
 """
 
 def run(filename):
-    """Extracts the sensor addresses from the specified file"""
+    """Extracts the config addresses from the specified file"""
     workbook = load_workbook(filename=filename, read_only=True)
 
     defines = []
 
     max_length = 0
 
-    for row in workbook["Sensor Addresses"].iter_rows(
+    for row in workbook["Config Addresses"].iter_rows(
         min_row = 1,
-        max_row = 300,
+        max_row = 1500,
         min_col = 1,
-        max_col = 7,
+        max_col = 6,
         values_only = True):
 
         parts = list(row)
         if None in (parts[1], parts[3], parts[4]):
             continue
         if parts[1][:2] != "0x":
-            continue
-        if parts[1] == "0x00":
-            # skipping reserved address
             continue
 
         if parts[2] == "" or parts[3] == "":
@@ -56,18 +53,13 @@ def run(filename):
         define["units"] = ""
         define["notes"] = ""
 
-        name = ""
-        if parts[2][:1] != "!":
-            name += f"{parts[2].upper()}_"
-
-        name += parts[3].upper().replace(" ", "_")
+        name = parts[3].upper().replace(" ", "_")
 
         max_length = max(len(name), max_length)
 
         define["value"] = parts[1]
         define["name"] = name
         define["size"] = parts[4]
-        define["units"] = parts[5] or ''
         defines.append(define)
 
     max_length += 2
@@ -80,7 +72,7 @@ def run(filename):
         lines.append(line)
 
     file_path = os.path.dirname(os.path.realpath(__file__))
-    with open(f"{file_path}/../sensors.h", "w", encoding="utf-8") as fh:
+    with open(f"{file_path}/../config.h", "w", encoding="utf-8") as fh:
         fh.write(HEADER)
         fh.write("\n".join(lines))
         fh.write("\n")
