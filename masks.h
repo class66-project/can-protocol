@@ -33,3 +33,10 @@
 #define NODE_CONTROLLERS        0x0020
 #define NODE_BROADCAST          0x003E
 #define NODE_PROGRAMMING        0x003F
+
+#define MASK_CONFIG_DIRECTION   0x0080
+
+#define CONFIG_DOWNLOAD         0x0080
+#define CONFIG_UPLOAD           0x0000
+
+#define MASK_CONFIG_LENGTH      0x0007
