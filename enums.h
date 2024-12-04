@@ -19,6 +19,6 @@ enum CANID_FUNCTION {
 enum CANID_STOCK {
   LOCO1       = 0x00,
   LOCO2       = 0x01,
-  UNPOWERED   = 0x10,
-  BROADCAST   = 0x11
+  UNPOWERED   = 0x02,
+  BROADCAST   = 0x03
 };
